@@ -1,19 +1,19 @@
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 public class BuildGeneSelectorGUI {
     private final String[] defaultGenes = {"AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ"};
     private final int TEXTFIELDMAXWIDTH = 40;
+    private ArrayList<TextField> parentOneTextField;
+    private ArrayList<TextField> parentTwoTextField;
 
     public ScrollPane buildGeneSelector(int numOfGenes){
+        parentOneTextField = new ArrayList<>();
+        parentTwoTextField = new ArrayList<>();
         GridPane newGridPane = new GridPane();
         newGridPane.setHgap(10.0);
         newGridPane.setVgap(10.0);
@@ -24,104 +24,119 @@ public class BuildGeneSelectorGUI {
         Label parentTwoLabel = new Label("Parent Two");
         newGridPane.add(parentTwoLabel, 2, 0, 2, 1);
 
-        int parentOneGeneCol = 0;
-        int parentOneGeneRow = 1;
-        int parentOneButtonsCol = 1;
-        int parentOneButtonsRow = 2;
-        int parentTwoGeneCol = 2;
-        int parentTwoGeneRow = 1;
-        int parentTwoButtonsCol = 3;
-        int parentTwoButtonsRow = 2;
+        //GridPane positions, incremented each loop for
+        //placing additional gene elements.
+        int parentOneGeneGridCol = 0;
+        int parentOneGeneGridRow = 1;
+        int parentOneButtonsGridCol = 1;
+        int parentOneButtonsGridRow = 2;
+        int parentTwoGeneGridCol = 2;
+        int parentTwoGeneGridRow = 1;
+        int parentTwoButtonsGridCol = 3;
+        int parentTwoButtonsGridRow = 2;
         for (int geneToPull = 0; geneToPull < numOfGenes; geneToPull++){
             //Parent 1 Gene
-            TextField parentOneGeneOneTextField = new TextField(defaultGenes[geneToPull]);
-            parentOneGeneOneTextField.setEditable(false);
-            parentOneGeneOneTextField.setMaxWidth(TEXTFIELDMAXWIDTH);
-            Label parentOneGeneOneLabel = new Label("Gene " + (geneToPull+1));
-            parentOneGeneOneLabel.setLabelFor(parentOneGeneOneTextField);
-            newGridPane.add(parentOneGeneOneLabel, parentOneGeneCol, parentOneGeneRow++);
-            newGridPane.add(parentOneGeneOneTextField, parentOneGeneCol, parentOneGeneRow++);
+            TextField parentOneGeneTextField = new TextField(defaultGenes[geneToPull]);
+            parentOneGeneTextField.setEditable(false);
+            parentOneGeneTextField.setMaxWidth(TEXTFIELDMAXWIDTH);
+            parentOneTextField.add(parentOneGeneTextField);
+            Label parentOneGeneLabel = new Label("Gene " + (geneToPull+1));
+            parentOneGeneLabel.setLabelFor(parentOneGeneTextField);
+            newGridPane.add(parentOneGeneLabel, parentOneGeneGridCol, parentOneGeneGridRow++);
+            newGridPane.add(parentOneGeneTextField, parentOneGeneGridCol, parentOneGeneGridRow++);
 
+            //Split the gene so we can make the first char uppercase and the second lowercase.
             String[] heteroConvert = defaultGenes[geneToPull].split("");
             //Parent 1 Gene Radio buttons
-            VBox parentOneGeneOneTypeRadioButtonGroup = new VBox();
-            ToggleGroup parentOneGeneOneGeneTypeToggleGroup = new ToggleGroup();
+            VBox parentOneGeneTypeRadioButtonGroupPane = new VBox();
+            ToggleGroup parentOneGeneTypeToggleGroup = new ToggleGroup();
             //Homozygous Dominant Radiobutton
-            RadioButton parentOneGeneOneHomozygousDomRadioButton = new RadioButton("Homozygous Dominant (" + defaultGenes[geneToPull] +")");
-            parentOneGeneOneHomozygousDomRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentOneGeneHomozygousDomRadioButton = new RadioButton("Homozygous Dominant (" + defaultGenes[geneToPull] +")");
+            parentOneGeneHomozygousDomRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentOneGeneOneTextField.setText(parentOneGeneOneTextField.getText().toUpperCase());
+                    parentOneGeneTextField.setText(parentOneGeneTextField.getText().toUpperCase());
                 }
             });
-            parentOneGeneOneHomozygousDomRadioButton.setToggleGroup(parentOneGeneOneGeneTypeToggleGroup);
+            parentOneGeneHomozygousDomRadioButton.setToggleGroup(parentOneGeneTypeToggleGroup);
             //Heterozygous RadioButton
-            RadioButton parentOneGeneOneHeterozygousRadioButton = new RadioButton("Heterozygous (" + heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase() + ")");
-            parentOneGeneOneHeterozygousRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentOneGeneHeterozygousRadioButton = new RadioButton("Heterozygous (" + heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase() + ")");
+            parentOneGeneHeterozygousRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentOneGeneOneTextField.setText(heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase());
+                    parentOneGeneTextField.setText(heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase());
                 }
             });
-            parentOneGeneOneHeterozygousRadioButton.setToggleGroup(parentOneGeneOneGeneTypeToggleGroup);
+            parentOneGeneHeterozygousRadioButton.setToggleGroup(parentOneGeneTypeToggleGroup);
             //Homozygous Recessive RadioButton
-            RadioButton parentOneGeneOneHomozygousRecRadioButton = new RadioButton("Homozygous Recessive (" + defaultGenes[geneToPull].toLowerCase() + ")");
-            parentOneGeneOneHomozygousRecRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentOneGeneHomozygousRecRadioButton = new RadioButton("Homozygous Recessive (" + defaultGenes[geneToPull].toLowerCase() + ")");
+            parentOneGeneHomozygousRecRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentOneGeneOneTextField.setText(parentOneGeneOneTextField.getText().toLowerCase());
+                    parentOneGeneTextField.setText(parentOneGeneTextField.getText().toLowerCase());
                 }
             });
-            parentOneGeneOneHomozygousRecRadioButton.setToggleGroup(parentOneGeneOneGeneTypeToggleGroup);
-            parentOneGeneOneGeneTypeToggleGroup.selectToggle(parentOneGeneOneHomozygousDomRadioButton);
+            parentOneGeneHomozygousRecRadioButton.setToggleGroup(parentOneGeneTypeToggleGroup);
+            parentOneGeneTypeToggleGroup.selectToggle(parentOneGeneHomozygousDomRadioButton);
             //Add RadioButtons to ToggleGroup
-            parentOneGeneOneTypeRadioButtonGroup.getChildren().addAll(parentOneGeneOneHomozygousDomRadioButton, parentOneGeneOneHeterozygousRadioButton, parentOneGeneOneHomozygousRecRadioButton);
+            parentOneGeneTypeRadioButtonGroupPane.getChildren().addAll(parentOneGeneHomozygousDomRadioButton, parentOneGeneHeterozygousRadioButton, parentOneGeneHomozygousRecRadioButton);
             //Add ToggleGroup to GridPane.
-            newGridPane.add(parentOneGeneOneTypeRadioButtonGroup, parentOneButtonsCol, parentOneButtonsRow);
-            parentOneButtonsRow += 2;
+            newGridPane.add(parentOneGeneTypeRadioButtonGroupPane, parentOneButtonsGridCol, parentOneButtonsGridRow);
+            parentOneButtonsGridRow += 2;
 
             //Parent 2 Gene
-            TextField parentTwoGeneOneTextField = new TextField(defaultGenes[geneToPull]);
-            parentTwoGeneOneTextField.setMaxWidth(TEXTFIELDMAXWIDTH);
-            parentTwoGeneOneTextField.setEditable(false);
-            Label parentTwoGeneOneLabel = new Label("Gene " + (geneToPull+1));
-            parentOneGeneOneLabel.setLabelFor(parentTwoGeneOneTextField);
-            newGridPane.add(parentTwoGeneOneLabel, parentTwoGeneCol, parentTwoGeneRow++);
-            newGridPane.add(parentTwoGeneOneTextField, parentTwoGeneCol, parentTwoGeneRow++);
+            TextField parentTwoGeneTextField = new TextField(defaultGenes[geneToPull]);
+            parentTwoGeneTextField.setEditable(false);
+            parentTwoGeneTextField.setMaxWidth(TEXTFIELDMAXWIDTH);
+            parentTwoTextField.add(parentTwoGeneTextField);
+            Label parentTwoGeneLabel = new Label("Gene " + (geneToPull+1));
+            parentTwoGeneLabel.setLabelFor(parentTwoGeneTextField);
+            newGridPane.add(parentTwoGeneLabel, parentTwoGeneGridCol, parentTwoGeneGridRow++);
+            newGridPane.add(parentTwoGeneTextField, parentTwoGeneGridCol, parentTwoGeneGridRow++);
 
             //Parent 2 Gene  Radio buttons
-            VBox parentTwoGeneOneTypeRadioButtonGroup = new VBox();
-            ToggleGroup parentTwoGeneOneGeneTypeToggleGroup = new ToggleGroup();
+            VBox parentTwoGeneTypeRadioButtonGroupPane = new VBox();
+            ToggleGroup parentTwoGeneTypeToggleGroup = new ToggleGroup();
             //Homozygous Dominant RadioButton
-            RadioButton parentTwoGeneOneHomozygousDomRadioButton = new RadioButton("Homozygous Dominant (" + defaultGenes[geneToPull] + ")");
-            parentTwoGeneOneHomozygousDomRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentTwoGeneHomozygousDomRadioButton = new RadioButton("Homozygous Dominant (" + defaultGenes[geneToPull] + ")");
+            parentTwoGeneHomozygousDomRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentTwoGeneOneTextField.setText(parentTwoGeneOneTextField.getText().toUpperCase());
+                    parentTwoGeneTextField.setText(parentTwoGeneTextField.getText().toUpperCase());
                 }
             });
-            parentTwoGeneOneHomozygousDomRadioButton.setToggleGroup(parentTwoGeneOneGeneTypeToggleGroup);
+            parentTwoGeneHomozygousDomRadioButton.setToggleGroup(parentTwoGeneTypeToggleGroup);
             //Heterozygous RadioButton
-            RadioButton parentTwoGeneOneHeterozygousRadioButton = new RadioButton("Heterozygous (" + heteroConvert[0] + heteroConvert[1].toLowerCase() + ")");
-            parentTwoGeneOneHeterozygousRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentTwoGeneHeterozygousRadioButton = new RadioButton("Heterozygous (" + heteroConvert[0] + heteroConvert[1].toLowerCase() + ")");
+            parentTwoGeneHeterozygousRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentTwoGeneOneTextField.setText(heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase());
+                    parentTwoGeneTextField.setText(heteroConvert[0].toUpperCase() + heteroConvert[1].toLowerCase());
                 }
             });
-            parentTwoGeneOneHeterozygousRadioButton.setToggleGroup(parentTwoGeneOneGeneTypeToggleGroup);
+            parentTwoGeneHeterozygousRadioButton.setToggleGroup(parentTwoGeneTypeToggleGroup);
             //Homozygous Recessive RadioButton
-            RadioButton parentTwoGeneOneHomozygousRecRadioButton = new RadioButton("Homozygous Recessive (" + defaultGenes[geneToPull].toLowerCase() + ")");
-            parentTwoGeneOneHomozygousRecRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton parentTwoGeneHomozygousRecRadioButton = new RadioButton("Homozygous Recessive (" + defaultGenes[geneToPull].toLowerCase() + ")");
+            parentTwoGeneHomozygousRecRadioButton.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue){
-                    parentTwoGeneOneTextField.setText(parentTwoGeneOneTextField.getText().toLowerCase());
+                    parentTwoGeneTextField.setText(parentTwoGeneTextField.getText().toLowerCase());
                 }
             });
-            parentTwoGeneOneHomozygousRecRadioButton.setToggleGroup(parentTwoGeneOneGeneTypeToggleGroup);
-            parentTwoGeneOneGeneTypeToggleGroup.selectToggle(parentTwoGeneOneHomozygousDomRadioButton);
+            parentTwoGeneHomozygousRecRadioButton.setToggleGroup(parentTwoGeneTypeToggleGroup);
+            parentTwoGeneTypeToggleGroup.selectToggle(parentTwoGeneHomozygousDomRadioButton);
             //Add RadioButtons to ToggleGroup
-            parentTwoGeneOneTypeRadioButtonGroup.getChildren().addAll(parentTwoGeneOneHomozygousDomRadioButton, parentTwoGeneOneHeterozygousRadioButton, parentTwoGeneOneHomozygousRecRadioButton);
+            parentTwoGeneTypeRadioButtonGroupPane.getChildren().addAll(parentTwoGeneHomozygousDomRadioButton, parentTwoGeneHeterozygousRadioButton, parentTwoGeneHomozygousRecRadioButton);
             //Add ToggleGroup to GridPane
-            newGridPane.add(parentTwoGeneOneTypeRadioButtonGroup, parentTwoButtonsCol, parentTwoButtonsRow);
-            parentTwoButtonsRow += 2;
+            newGridPane.add(parentTwoGeneTypeRadioButtonGroupPane, parentTwoButtonsGridCol, parentTwoButtonsGridRow);
+            parentTwoButtonsGridRow += 2;
         }
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(newGridPane);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setPadding(new Insets(10, 10, 10, 10));
         return scrollPane;
+    }
+
+    public ArrayList<TextField> getParentOneTextField(){
+        return parentOneTextField;
+    }
+
+    public ArrayList<TextField> getParentTwoTextField(){
+        return parentTwoTextField;
     }
 }

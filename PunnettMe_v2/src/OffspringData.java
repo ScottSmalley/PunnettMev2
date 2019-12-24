@@ -18,7 +18,6 @@ public class OffspringData implements OffspringResultDataBuilder {
         for (String key : dataResults.keySet()){
             double totalNumOfThisGeneSequence = dataResults.get(key);
             dataResults.replace(key, (totalNumOfThisGeneSequence / offspring.size()));
-//            dataResults.replace(key, ((totalNumOfThisGeneSequence / offspring.size())*100));
         }
         return dataResults;
     }
