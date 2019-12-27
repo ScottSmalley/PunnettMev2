@@ -1,24 +1,24 @@
 import javafx.scene.control.*;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class BuildGeneResultsGUI {
-    public TextArea buildGeneResults(ArrayList<String> parentOneGenes, ArrayList<String> parentTwoGenes){
-        //BUILD GENES & RESULTS
-        GeneBuilder parentOneGeneBuilder = new BaseGene(parentOneGenes.get(0));
-        for (int idx = 1; idx < parentOneGenes.size(); idx++){
-            parentOneGeneBuilder = new Gene(parentOneGenes.get(idx), parentOneGeneBuilder);
-        }
-        GeneBuilder parentTwoGeneBuilder = new BaseGene(parentTwoGenes.get(0));
-        for (int idx = 1; idx < parentTwoGenes.size(); idx++){
-            parentTwoGeneBuilder = new Gene(parentTwoGenes.get(idx), parentTwoGeneBuilder);
-        }
-        OffspringResult offspringResultGenerator = new OffspringResult();
-        ArrayList<String> offspringResults = offspringResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-        OffspringData offspringDataGenerator = new OffspringData();
-        TreeMap<String, Double> formattedResults = offspringDataGenerator.buildOffspringResultData(offspringResults);
+    public TextArea buildGeneResults(TreeMap<String, Double> results){
+//    public TextArea buildGeneResults(ArrayList<String> parentOneGenes, ArrayList<String> parentTwoGenes){
+//        //BUILD GENES & RESULTS
+//        GeneBuilder parentOneGeneBuilder = new BaseGene(parentOneGenes.get(0));
+//        for (int idx = 1; idx < parentOneGenes.size(); idx++){
+//            parentOneGeneBuilder = new Gene(parentOneGenes.get(idx), parentOneGeneBuilder);
+//        }
+//        GeneBuilder parentTwoGeneBuilder = new BaseGene(parentTwoGenes.get(0));
+//        for (int idx = 1; idx < parentTwoGenes.size(); idx++){
+//            parentTwoGeneBuilder = new Gene(parentTwoGenes.get(idx), parentTwoGeneBuilder);
+//        }
+//        OffspringResult offspringResultGenerator = new OffspringResult();
+//        ArrayList<String> offspringResults = offspringResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+//        OffspringData offspringDataGenerator = new OffspringData();
+//        TreeMap<String, Double> formattedResults = offspringDataGenerator.buildOffspringResultData(offspringResults);
 
         //BUILD GUI ELEMENT WITH DATA TO RETURN
         TextArea resultsTextArea = new TextArea();
@@ -26,10 +26,10 @@ public class BuildGeneResultsGUI {
         resultsTextArea.setWrapText(false);
         DecimalFormat formatPercent = new DecimalFormat("#.###%");
         resultsTextArea.setText("Gene:\t% Chance:");
-        for (String gene : formattedResults.keySet()){
-            resultsTextArea.appendText("\n" + gene + "\t" + formatPercent.format(formattedResults.get(gene)));
+        for (String gene : results.keySet()){
+            resultsTextArea.appendText("\n" + gene + "\t" + formatPercent.format(results.get(gene)));
         }
-        resultsTextArea.appendText("\nTotal unique gene combinations: " + formattedResults.size());
+        resultsTextArea.appendText("\nTotal unique gene combinations:\t" + results.size());
 //        GridPane newGridPane = new GridPane();
 //        newGridPane.setHgap(10.0);
 //        newGridPane.setVgap(10.0);

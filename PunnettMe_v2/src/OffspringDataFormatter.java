@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class OffspringData implements OffspringResultDataBuilder {
+public class OffspringDataFormatter implements OffspringDataBuilder {
     @Override
-    public TreeMap<String, Double> buildOffspringResultData(ArrayList<String> offspring) {
+    public TreeMap<String, Double> buildOffspringData(ArrayList<String> offspring) {
         TreeMap<String, Double> dataResults = new TreeMap<>();
         for (String singleOffspring : offspring){
             if (dataResults.containsKey(singleOffspring)){

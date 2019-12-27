@@ -6,6 +6,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class Main extends Application {
     private final int[] numOfGenesPossible = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -43,7 +44,12 @@ public class Main extends Application {
             numOfGenesComboBox.getItems().add(size);
         }
         numOfGenesComboBox.getSelectionModel().select(0);
-//        numOfGenesComboBox.
+        numOfGenesComboBox.setOnAction(event -> {
+            //Get the number from the ComboBox, and convert it into an int to be sent to the BuildGeneSelectorGUI object.
+            int numberOfGeneSelectorsToDisplay = Integer.parseInt(numOfGenesComboBox.getSelectionModel().getSelectedItem().toString());
+            //Get the GridPane filled with gene selector GUI elements and set it as the content of the center pane.
+            centerDisplay.setContent(buildGeneSelector.buildGeneSelector(numberOfGeneSelectorsToDisplay));
+        });
         VBox.setMargin(numOfGenesComboBox, baselineInsets);
         Label numofGenesLabel = new Label("Number of Genes");
         numofGenesLabel.setLabelFor(numOfGenesComboBox);
@@ -54,13 +60,11 @@ public class Main extends Application {
         HBox buttonDisplay = new HBox();
         Button runButton = new Button("Run");
         runButton.setOnAction(event -> {
-//            System.out.println("You hit run.");
             buildProcessingScreen();
             generateGeneResults();
         });
         Button resetButton = new Button("Reset");
         resetButton.setOnAction(event -> {
-//            System.out.println("You hit reset.");
             numOfGenesComboBox.getSelectionModel().select(0);
             resetCenterDisplay();
         });
@@ -69,7 +73,10 @@ public class Main extends Application {
         leftDisplay.getChildren().add(buttonDisplay);
 
         //Center Display
-        centerDisplay = buildGeneSelector.buildGeneSelector(1);
+        centerDisplay = new ScrollPane();
+        centerDisplay.setContent(buildGeneSelector.buildGeneSelector(1));
+        centerDisplay.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        centerDisplay.setPadding(new Insets(10, 10, 10, 10));
 
         layout.setLeft(leftDisplay);
         layout.setCenter(centerDisplay);
@@ -78,8 +85,7 @@ public class Main extends Application {
     }
 
     private void resetCenterDisplay(){
-        centerDisplay = buildGeneSelector.buildGeneSelector(1);
-        layout.setCenter(centerDisplay);
+        centerDisplay.setContent(buildGeneSelector.buildGeneSelector(1));
     }
 
     private void buildProcessingScreen(){
@@ -91,16 +97,40 @@ public class Main extends Application {
     }
 
     private void generateGeneResults(){
+//        ArrayList<String> parentOneGeneNames = new ArrayList<>();
+//        for (TextField textField : buildGeneSelector.getParentOneTextField()){
+//            parentOneGeneNames.add(textField.getText());
+//        }
+//        ArrayList<String> parentTwoGeneNames = new ArrayList<>();
+//        for (TextField textField : buildGeneSelector.getParentTwoTextField()){
+//            parentTwoGeneNames.add(textField.getText());
+//        }
+
+        //BUILD GENES & RESULTS
+        ArrayList<TextField> geneNameTextFields = buildGeneSelector.getParentOneTextField();
+        GeneBuilder parentOneGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
+        for (int idx = 1; idx < geneNameTextFields.size(); idx++){
+            parentOneGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentOneGeneBuilder);
+        }
+        geneNameTextFields = buildGeneSelector.getParentTwoTextField();
+        GeneBuilder parentTwoGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
+        for (int idx = 1; idx < geneNameTextFields.size(); idx++){
+            parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
+        }
+        OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
+        long startTime = System.currentTimeMillis();
+        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time: " + (endTime - startTime) + " ms");
+        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
+        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
         BuildGeneResultsGUI buildGeneResults = new BuildGeneResultsGUI();
-        ArrayList<String> parentOneGeneNames = new ArrayList<>();
-        for (TextField textField : buildGeneSelector.getParentOneTextField()){
-            parentOneGeneNames.add(textField.getText());
-        }
-        ArrayList<String> parentTwoGeneNames = new ArrayList<>();
-        for (TextField textField : buildGeneSelector.getParentTwoTextField()){
-            parentTwoGeneNames.add(textField.getText());
-        }
-        centerDisplay.setContent(buildGeneResults.buildGeneResults(parentOneGeneNames, parentTwoGeneNames));
+        //work on dimensions.
+        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
+        centerDisplay.setContent(content);
+//        content.setMaxWidth();
+//        content.setMaxHeight(centerDisplay.getHeight());
+//        centerDisplay.setContent(buildGeneResults.buildGeneResults(formattedResults));
     }
 }
 

@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af9c3862-428e-4a67-8fe0-1eb690428e08" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OffspringDataTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/META-INF/PunnettMe_v2.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringResultDataBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BuildGeneSelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BuildGeneSelectorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringDataFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuilderResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringResultDataBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringDataBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,22 +89,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577124646446" />
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1577217919461">
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1577469352253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
-    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1577217919461">
+    <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577469352253" />
+    <state width="1877" height="189" key="GridCell.Tab.0.bottom" timestamp="1577475510332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
-    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1577217919461">
+    <state width="1877" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577475510332" />
+    <state width="1877" height="189" key="GridCell.Tab.0.center" timestamp="1577475510332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
-    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1577217919461">
+    <state width="1877" height="189" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577475510332" />
+    <state width="1877" height="189" key="GridCell.Tab.0.left" timestamp="1577475510332">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
+    <state width="1877" height="189" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577475510332" />
+    <state width="1877" height="189" key="GridCell.Tab.0.right" timestamp="1577475510332">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="189" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577475510332" />
     <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1577217919462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -116,24 +125,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919462" />
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1577205056110">
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1577467295720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577205056110" />
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577467295720" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1577145268220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577145268220" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -11,7 +11,7 @@ public class BuildGeneSelectorGUI {
     private ArrayList<TextField> parentOneTextField;
     private ArrayList<TextField> parentTwoTextField;
 
-    public ScrollPane buildGeneSelector(int numOfGenes){
+    public GridPane buildGeneSelector(int numOfGenes){
         parentOneTextField = new ArrayList<>();
         parentTwoTextField = new ArrayList<>();
         GridPane newGridPane = new GridPane();
@@ -125,11 +125,12 @@ public class BuildGeneSelectorGUI {
             newGridPane.add(parentTwoGeneTypeRadioButtonGroupPane, parentTwoButtonsGridCol, parentTwoButtonsGridRow);
             parentTwoButtonsGridRow += 2;
         }
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(newGridPane);
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        scrollPane.setPadding(new Insets(10, 10, 10, 10));
-        return scrollPane;
+//        ScrollPane scrollPane = new ScrollPane();
+//        scrollPane.setContent(newGridPane);
+//        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+//        scrollPane.setPadding(new Insets(10, 10, 10, 10));
+//        return scrollPane;
+        return  newGridPane;
     }
 
     public ArrayList<TextField> getParentOneTextField(){

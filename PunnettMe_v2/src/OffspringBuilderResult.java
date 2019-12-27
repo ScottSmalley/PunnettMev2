@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 
-public class OffspringResult implements OffspringBuilder {
+public class OffspringBuilderResult implements OffspringBuilder {
+    private OffspringDataTree tree;
+    public OffspringBuilderResult(){
+        tree = new OffspringDataTree();
+    }
+
     @Override
     public ArrayList<String> buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes) {
         ArrayList<String> parentOneCombinations = parentOneGenes.buildSingleParentGeneCombination();
         ArrayList<String> parentTwoCombination = parentTwoGenes.buildSingleParentGeneCombination();
-        ArrayList<String> offspringResults = new ArrayList<>();
+//        ArrayList<String> offspringResults = new ArrayList<>();
         for (String parentOne : parentOneCombinations){
                 String[] parentOneSplit = parentOne.split("");
             for (String parentTwo : parentTwoCombination){
