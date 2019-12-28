@@ -17,6 +17,7 @@ public class Main extends Application {
     private ScrollPane centerDisplay;
     private BorderPane layout;
     private BuildGeneSelectorGUI buildGeneSelector;
+    private OffspringDataTree offspringTree;
     public static void main (String [] args){
         launch(args);
     }
@@ -118,19 +119,27 @@ public class Main extends Application {
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
         OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
+        offspringTree = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+//        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+//        long endTime = System.currentTimeMillis();
+//        System.out.println("Time: " + (endTime - startTime) + " ms");
         long startTime = System.currentTimeMillis();
-        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Time: " + (endTime - startTime) + " ms");
-        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
-        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
+//        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
+//        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
         BuildGeneResultsGUI buildGeneResults = new BuildGeneResultsGUI();
         //work on dimensions.
-        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
-        centerDisplay.setContent(content);
-//        content.setMaxWidth();
-//        content.setMaxHeight(centerDisplay.getHeight());
-//        centerDisplay.setContent(buildGeneResults.buildGeneResults(formattedResults));
+//        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
+        //TIMER
+//        centerDisplay.setContent(content);
+        TreeMap<String, Integer> resultsTree = offspringTree.getOffspringTreeMap();
+        for (String key : resultsTree.keySet()){
+            System.out.println(key + "\t" + resultsTree.get(key));
+        }
+//        centerDisplay.setContent(buildGeneResults.buildGeneResults(offspringTree));
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time: " + (endTime - startTime) + " ms");
+        System.out.println("Total number of nodes: " + offspringTree.getCountOfUniqueNodes());
+        System.out.println("Total number of elements: " + offspringTree.getCountOfTotalDataPoints());
     }
 }
 

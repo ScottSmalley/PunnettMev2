@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.TreeMap;
 
 public class OffspringDataTree {
     /**
@@ -27,12 +27,18 @@ public class OffspringDataTree {
 
 
     private Node root;
-    private List<String> output = new ArrayList<>();
+    private ArrayList<String> output;
+    private TreeMap<String, Integer> outputTreeMap;
+    private int countOfUniqueNodes;
+    private int countOfDuplicateNodes;
+
 
     //Constructor
     public OffspringDataTree()
     {
         root = null;
+        countOfUniqueNodes = 0;
+        countOfDuplicateNodes = 0;
     }
 
     /**
@@ -135,7 +141,7 @@ public class OffspringDataTree {
             else
             {
                 root.left.increment();
-                hasDuplicate = true;
+//                hasDuplicate = true;
                 return true;
             }
         }
@@ -149,7 +155,7 @@ public class OffspringDataTree {
             else
             {
                 root.right.increment();
-                hasDuplicate = true;
+//                hasDuplicate = true;
                 return true;
             }
         }
@@ -431,10 +437,10 @@ public class OffspringDataTree {
      *
      * @return offspring List
      */
-    public List<String> getOffspring()
+    public ArrayList<String> getOffspringArrayList()
     {
         output = new ArrayList<>();
-        getInOrderTraversal(root);
+        getInOrderTraversalArrayList(root);
 
         return output;
     }
@@ -448,21 +454,80 @@ public class OffspringDataTree {
      *
      * @param root Node
      */
-    private void getInOrderTraversal(Node root)
+    private void getInOrderTraversalArrayList(Node root)
     {
         if (root == null)
         {
             return;
         }
-        getInOrderTraversal(root.left);
+        getInOrderTraversalArrayList(root.left);
 
         //To check for duplicates, and output them
         //if they exist.
-        for (int add = 0; add <= root.getDuplicate(); add++)
+        for (int add = 0; add < root.getCount(); add++)
         {
             output.add(root.data);
         }
-        getInOrderTraversal(root.right);
+        getInOrderTraversalArrayList(root.right);
+    }
+    /**
+     * Outward Facing get method to get
+     * the offspring results.
+     *
+     * @return offspring List
+     */
+    public TreeMap<String, Integer> getOffspringTreeMap()
+    {
+        outputTreeMap = new TreeMap<>();
+        getInOrderTraversalTreeMap(root);
+
+        return outputTreeMap;
+    }
+
+    /**
+     * Recursive method to conduct an
+     * In Order Traversal, as it finds
+     * Nodes, it will check it's duplicate
+     * attribute to output multiples of the
+     * same output.
+     *
+     * @param root Node
+     */
+    private void getInOrderTraversalTreeMap(Node root)
+    {
+        if (root == null)
+        {
+            return;
+        }
+        getInOrderTraversalTreeMap(root.left);
+
+//        //To check for duplicates, and output them
+//        //if they exist.
+//        for (int add = 0; add <= root.getDuplicate(); add++)
+//        {
+//            output.add(root.data);
+//        }
+        outputTreeMap.put(root.data, root.getCount());
+        getInOrderTraversalTreeMap(root.right);
+    }
+
+    /**
+     * Returns the total number of nodes
+     * in the Tree.
+     * @return
+     */
+    public int getCountOfUniqueNodes(){
+        return countOfUniqueNodes;
+    }
+
+    /**
+     * Returns the total number of
+     * Nodes in the Tree plus all
+     * counts for each node.
+     * @return
+     */
+    public int getCountOfTotalDataPoints(){
+        return countOfUniqueNodes + countOfDuplicateNodes;
     }
 
     /**
@@ -476,7 +541,7 @@ public class OffspringDataTree {
 //            //For comparisons in AVL Tree
 //            private int score;
         //For multiple duplicates, to keep AVL Tree without duplicates.
-        private int duplicate = 0;
+        private int count = 0;
 
         private String data;
         //Parent Node, Left Subtree, Right Subtree
@@ -488,22 +553,24 @@ public class OffspringDataTree {
         {
 //                this.score = score;
             this.data = data;
-            duplicate = 0;
+            count = 1;
             left = null;
             right = null;
             parent = null;
+            countOfUniqueNodes++;
         }
 
         //To increment the duplicate attribute.
         private void increment()
         {
-            duplicate++;
+            count++;
+            countOfDuplicateNodes++;
         }
 
         //Get method for duplicate attribute.
-        private int getDuplicate()
+        private int getCount()
         {
-            return duplicate;
+            return count;
         }
     }
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
 public interface OffspringBuilder {
-    ArrayList<String> buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes);
+    OffspringDataTree buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes);
+//    ArrayList<String> buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes);
 }

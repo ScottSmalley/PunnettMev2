@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class BuildGeneResultsGUI {
+//    public TextArea buildGeneResults(OffspringDataTree offspringTree){
     public TextArea buildGeneResults(TreeMap<String, Double> results){
 //    public TextArea buildGeneResults(ArrayList<String> parentOneGenes, ArrayList<String> parentTwoGenes){
 //        //BUILD GENES & RESULTS

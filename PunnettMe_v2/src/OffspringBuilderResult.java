@@ -7,7 +7,8 @@ public class OffspringBuilderResult implements OffspringBuilder {
     }
 
     @Override
-    public ArrayList<String> buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes) {
+    public OffspringDataTree buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes) {
+//    public ArrayList<String> buildOffspringResults(GeneBuilder parentOneGenes, GeneBuilder parentTwoGenes) {
         ArrayList<String> parentOneCombinations = parentOneGenes.buildSingleParentGeneCombination();
         ArrayList<String> parentTwoCombination = parentTwoGenes.buildSingleParentGeneCombination();
 //        ArrayList<String> offspringResults = new ArrayList<>();
@@ -15,10 +16,13 @@ public class OffspringBuilderResult implements OffspringBuilder {
                 String[] parentOneSplit = parentOne.split("");
             for (String parentTwo : parentTwoCombination){
                 String[] parentTwoSplit = parentTwo.split("");
-                offspringResults.add(generateSingleOffspringResult(parentOneSplit, parentTwoSplit));
+                tree.storeInTree(generateSingleOffspringResult(parentOneSplit, parentTwoSplit));
+//                offspringResults.add(generateSingleOffspringResult(parentOneSplit, parentTwoSplit));
             }
         }
-        return offspringResults;
+        return tree;
+//        return tree.getOffspring();
+//        return offspringResults;
     }
 
     private String generateSingleOffspringResult(String[] parentOne, String[] parentTwo){
