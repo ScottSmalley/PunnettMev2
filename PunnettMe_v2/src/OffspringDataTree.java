@@ -31,6 +31,7 @@ public class OffspringDataTree {
     private TreeMap<String, Integer> outputTreeMap;
     private int countOfUniqueNodes;
     private int countOfDuplicateNodes;
+    private boolean hasDuplicates;
 
 
     //Constructor
@@ -39,6 +40,7 @@ public class OffspringDataTree {
         root = null;
         countOfUniqueNodes = 0;
         countOfDuplicateNodes = 0;
+        hasDuplicates = false;
     }
 
     /**
@@ -69,11 +71,15 @@ public class OffspringDataTree {
                  * If a duplicate is found, it will return true and
                  * increment the counter for that Node in the traverseForDuplicates() method.
                  */
-                if (!checkForDuplicates(data, root, false))
+//                if (!checkForDuplicates(data, root))
+//                if (!checkForDuplicates(data, root, false))
+                checkForDuplicates(data, root);
+                if (!hasDuplicates)
                 {
                     //Insert in the tree.
                     insert(new Node(data), root);
                 }
+                hasDuplicates = false;
             }
         }
         else
@@ -125,41 +131,62 @@ public class OffspringDataTree {
      *
 //         * @param score integer
      * @param root Node
-     * @param hasDuplicate boolean
+//     * @param hasDuplicate boolean
      * @return duplicate boolean
      */
-    private boolean checkForDuplicates(String data, Node root, boolean hasDuplicate)
+    private void checkForDuplicates(String data, Node root)
+//    private boolean checkForDuplicates(String data, Node root)
+//    private boolean checkForDuplicates(String data, Node root, boolean hasDuplicate)
 //        private boolean checkForDuplicates(int score, Node root, boolean hasDuplicate)
     {
+//        if (hasDuplicates){
+//            return;
+//        }
         //Left subtree
         if (root.left != null)
         {
-            if (root.left.data.compareTo(data) != 0)
-            {
-                checkForDuplicates(data, root.left, hasDuplicate);
-            }
-            else
-            {
-                root.left.increment();
+            checkForDuplicates(data, root.left);
+//            if (root.left.data.compareTo(data) != 0)
+//            {
+//                System.out.println("root.left.data " + root.left.data + " data:" + data + " " + root.left.data.compareTo(data));
+//                checkForDuplicates(data, root.left, hasDuplicate);
+////                checkForDuplicates(data, root.left);
+////                checkForDuplicates(data, root.left, hasDuplicate);
+//            }
+//            else
+//            {
+//                root.left.increment();
 //                hasDuplicate = true;
-                return true;
-            }
+////                hasDuplicate = true;
+////                return true;
+//            }
+        }
+        if (root.data.compareTo(data) == 0){
+            root.increment();
+            hasDuplicates = true;
         }
         //Right subtree
         if (root.right != null)
         {
-            if (root.right.data.compareTo(data) != 0)
-            {
-                checkForDuplicates(data, root.right, hasDuplicate);
-            }
-            else
-            {
-                root.right.increment();
+            checkForDuplicates(data, root.right);
+//            if (root.right.data.compareTo(data) != 0)
+//            {
+//                System.out.println("right.left.data " + root.right.data + " data: " + data + " " + root.right.data.compareTo(data));
+//                checkForDuplicates(data, root.right, hasDuplicate);
+////                checkForDuplicates(data, root.right);
+////                checkForDuplicates(data, root.right, hasDuplicate);
+//            }
+//            else
+//            {
+//                root.right.increment();
 //                hasDuplicate = true;
-                return true;
-            }
+////                hasDuplicate = true;
+////                return true;
+//            }
         }
-        return hasDuplicate;
+//        return hasDuplicate;
+//        return false;
+//        return hasDuplicate;
     }
 
     /**
@@ -541,9 +568,9 @@ public class OffspringDataTree {
 //            //For comparisons in AVL Tree
 //            private int score;
         //For multiple duplicates, to keep AVL Tree without duplicates.
-        private int count = 0;
+        protected int count = 0;
 
-        private String data;
+        protected String data;
         //Parent Node, Left Subtree, Right Subtree
         private Node parent, left, right;
 
@@ -557,6 +584,7 @@ public class OffspringDataTree {
             left = null;
             right = null;
             parent = null;
+//            System.out.println("I'm incrementing: " + this.data + " " + countOfUniqueNodes + " "+ count);
             countOfUniqueNodes++;
         }
 
@@ -572,5 +600,13 @@ public class OffspringDataTree {
         {
             return count;
         }
+    }
+
+    public void resetTree(){
+        root = null;
+        countOfUniqueNodes = 0;
+        countOfDuplicateNodes = 0;
+        //Note: maybe add the AL and TM
+        //to be reset. -12/28/19
     }
 }

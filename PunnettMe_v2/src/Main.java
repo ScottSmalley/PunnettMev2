@@ -108,6 +108,7 @@ public class Main extends Application {
 //        }
 
         //BUILD GENES & RESULTS
+//        offspringTree = new OffspringDataTree();
         ArrayList<TextField> geneNameTextFields = buildGeneSelector.getParentOneTextField();
         GeneBuilder parentOneGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
@@ -119,27 +120,28 @@ public class Main extends Application {
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
         OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
-        offspringTree = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-//        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+
+//        offspringTree = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
 //        long endTime = System.currentTimeMillis();
 //        System.out.println("Time: " + (endTime - startTime) + " ms");
+        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
+        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
         long startTime = System.currentTimeMillis();
-//        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
-//        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
         BuildGeneResultsGUI buildGeneResults = new BuildGeneResultsGUI();
-        //work on dimensions.
-//        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
-        //TIMER
-//        centerDisplay.setContent(content);
-        TreeMap<String, Integer> resultsTree = offspringTree.getOffspringTreeMap();
-        for (String key : resultsTree.keySet()){
-            System.out.println(key + "\t" + resultsTree.get(key));
-        }
-//        centerDisplay.setContent(buildGeneResults.buildGeneResults(offspringTree));
+        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
         long endTime = System.currentTimeMillis();
         System.out.println("Time: " + (endTime - startTime) + " ms");
-        System.out.println("Total number of nodes: " + offspringTree.getCountOfUniqueNodes());
-        System.out.println("Total number of elements: " + offspringTree.getCountOfTotalDataPoints());
+        centerDisplay.setContent(content);
+////        TreeMap<String, Integer> resultsTree = offspringTree.getOffspringTreeMap();
+//        for (String key : formattedResults.keySet()){
+////        for (String key : resultsTree.keySet()){
+//            System.out.println(key + "\t" + formattedResults.get(key));
+////            System.out.println(key + "\t" + resultsTree.get(key));
+//        }
+//        centerDisplay.setContent(buildGeneResults.buildGeneResults(offspringTree));
+//        System.out.println("Total number of unique nodes: " + offspringTree.getCountOfUniqueNodes());
+//        System.out.println("Total number of total elements: " + offspringTree.getCountOfTotalDataPoints());
     }
 }
 
