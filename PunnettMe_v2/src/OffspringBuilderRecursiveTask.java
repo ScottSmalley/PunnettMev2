@@ -6,7 +6,6 @@ public class OffspringBuilderRecursiveTask extends RecursiveTask<ArrayList<Strin
     private ArrayList<String> parentOneCombinations;
     private ArrayList<String> parentTwoCombinations;
     private List<String> results;
-//    private ArrayList<String> results;
     private int threshold;
 
     public OffspringBuilderRecursiveTask(List<String> results, ArrayList<String> parentOneCombinations, ArrayList<String> parentTwoCombinations, int threshold){
@@ -73,11 +72,10 @@ public class OffspringBuilderRecursiveTask extends RecursiveTask<ArrayList<Strin
 
             results.addAll(rightTask.compute());
             results.addAll(leftTask.join());
-//            results.addAll(invokeAll(leftTask, rightTask));
         }
         ArrayList<String> resultsConverted = new ArrayList<>();
         resultsConverted.addAll(results);
+        System.out.println("In recursion: " + resultsConverted.size());
         return resultsConverted;
-//        return results;
     }
 }

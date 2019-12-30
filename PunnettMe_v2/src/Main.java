@@ -1,40 +1,54 @@
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Main extends Application {
-    private final int[] numOfGenesPossible = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     private final double DISPLAYSIDECOLUMNWIDTH = 0.3;
-//    private final double DISPLAYCENTERCOLUMNWIDTH = 0.7;
-//    private final int TEXTFIELDMAXWIDTH = 40;
-//    private final int DEFAULTNUMOFGENES = 1;
+    private final double CENTERDISPLAYRATIO = 0.95;
+    private final int[] numOfGenesPossible = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    private Stage primaryStage;
     private ScrollPane centerDisplay;
     private BorderPane layout;
     private BuildGeneSelectorGUI buildGeneSelector;
-    private OffspringDataTree offspringTree;
+    private BuildGeneResultsGUI buildGeneResults;
+
     public static void main (String [] args){
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
         buildGeneSelector = new BuildGeneSelectorGUI();
         primaryStage.setTitle("PunnettMe v2 - Scott Smalley");
         layout = new BorderPane();
         Scene scene = new Scene(layout, 800, 600);
         Insets baselineInsets = new Insets(5, 5, 5, 5);
 
-        Menu infoMenu = new Menu("Info");
+        Menu moreMenu = new Menu("More");
+
+        MenuItem generateCsvFileMenuItem = new MenuItem("Generate CSV File");
+        generateCsvFileMenuItem.setOnAction(event -> buildCSVFile());
+        generateCsvFileMenuItem.setDisable(true);
+        moreMenu.getItems().add(generateCsvFileMenuItem);
+
         MenuItem aboutMeMenuItem = new MenuItem("About Me");
-        infoMenu.getItems().add(aboutMeMenuItem);
+        aboutMeMenuItem.setOnAction(event -> showAboutMeWindow());
+        moreMenu.getItems().add(aboutMeMenuItem);
+
         MenuBar menuBar = new MenuBar();
-        menuBar.getMenus().add(infoMenu);
+        menuBar.getMenus().add(moreMenu);
         layout.setTop(menuBar);
 
         //Left Display
@@ -61,11 +75,16 @@ public class Main extends Application {
         HBox buttonDisplay = new HBox();
         Button runButton = new Button("Run");
         runButton.setOnAction(event -> {
-            buildProcessingScreen();
+            generateCsvFileMenuItem.setDisable(false);
+            runButton.setDisable(true);
+            numOfGenesComboBox.setDisable(true);
             generateGeneResults();
         });
         Button resetButton = new Button("Reset");
         resetButton.setOnAction(event -> {
+            generateCsvFileMenuItem.setDisable(true);
+            runButton.setDisable(false);
+            numOfGenesComboBox.setDisable(false);
             numOfGenesComboBox.getSelectionModel().select(0);
             resetCenterDisplay();
         });
@@ -89,26 +108,7 @@ public class Main extends Application {
         centerDisplay.setContent(buildGeneSelector.buildGeneSelector(1));
     }
 
-    private void buildProcessingScreen(){
-        TextArea resultsTextArea = new TextArea();
-        resultsTextArea.setEditable(false);
-        resultsTextArea.setWrapText(true);
-        resultsTextArea.setText("Processing...");
-        centerDisplay.setContent(resultsTextArea);
-    }
-
     private void generateGeneResults(){
-//        ArrayList<String> parentOneGeneNames = new ArrayList<>();
-//        for (TextField textField : buildGeneSelector.getParentOneTextField()){
-//            parentOneGeneNames.add(textField.getText());
-//        }
-//        ArrayList<String> parentTwoGeneNames = new ArrayList<>();
-//        for (TextField textField : buildGeneSelector.getParentTwoTextField()){
-//            parentTwoGeneNames.add(textField.getText());
-//        }
-
-        //BUILD GENES & RESULTS
-//        offspringTree = new OffspringDataTree();
         ArrayList<TextField> geneNameTextFields = buildGeneSelector.getParentOneTextField();
         GeneBuilder parentOneGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
@@ -119,64 +119,94 @@ public class Main extends Application {
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
+
         OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
         ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
 
-//        offspringTree = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-//        long endTime = System.currentTimeMillis();
-//        System.out.println("Time: " + (endTime - startTime) + " ms");
         OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
         TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
-        long startTime = System.currentTimeMillis();
-        BuildGeneResultsGUI buildGeneResults = new BuildGeneResultsGUI();
-        TextArea content = buildGeneResults.buildGeneResults(formattedResults);
-        long endTime = System.currentTimeMillis();
-        System.out.println("Time: " + (endTime - startTime) + " ms");
-        centerDisplay.setContent(content);
-////        TreeMap<String, Integer> resultsTree = offspringTree.getOffspringTreeMap();
-//        for (String key : formattedResults.keySet()){
-////        for (String key : resultsTree.keySet()){
-//            System.out.println(key + "\t" + formattedResults.get(key));
-////            System.out.println(key + "\t" + resultsTree.get(key));
-//        }
-//        centerDisplay.setContent(buildGeneResults.buildGeneResults(offspringTree));
-//        System.out.println("Total number of unique nodes: " + offspringTree.getCountOfUniqueNodes());
-//        System.out.println("Total number of total elements: " + offspringTree.getCountOfTotalDataPoints());
+
+        buildGeneResults = new BuildGeneResultsGUI();
+        ObservableList<String> results = buildGeneResults.buildGeneResults(formattedResults, offspringDataFormatterGenerator.getTotalDataPoints());
+        ListView<String> resultsContent = new ListView<>(results);
+
+        centerDisplay.setContent(resultsContent);
+        resultsContent.setPrefWidth(centerDisplay.getWidth()*CENTERDISPLAYRATIO);
+        resultsContent.setPrefHeight(centerDisplay.getHeight()*CENTERDISPLAYRATIO);
+
+    }
+    private void showAboutMeWindow(){
+        System.out.println("Abt me");
+//        ButtonType closeBtn = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+//        Dialog<String> dialogBox = new Dialog<>();
+//        dialogBox.getDialogPane().getButtonTypes().add(closeBtn);
+        Stage modalStage = new Stage();
+//        modalStage.sizeToScene();
+        BorderPane modalPane = new BorderPane();
+        Scene modalScene = new Scene(modalPane, primaryStage.getWidth()*0.5, primaryStage.getHeight()*0.5);
+
+        VBox dialog = new VBox();
+        dialog.setPadding(new Insets(5, 5, 5, 5));
+
+        TextArea aboutMeTextArea = new TextArea("Hello, my name is Scott Smalley. My project is to help " +
+                "those interested in seeing the results of a Punnett Square between two reproductive partners. " +
+                "When I took Biology, I really could’ve used a user-friendly, results oriented calculator. Most " +
+                "Punnett Square calculators I find on the internet are very limited. The highest calculator I could " +
+                "find could compare 7 genes. Additionally, they do not give user-friendly output—hard to copy and " +
+                "paste or output to a data file. This software allows you to compare up to 10 genes, view the " +
+                "percent chance of each combination appearing, the number of unique gene combinations, the number of " +
+                "total offspring considered. Lastly, I added functionality to generate a CSV file so it can be " +
+                "imported to more advanced tools like Excel.\n\nIf you'd like to know more about me, please check out " +
+                "my website at www.scottsmalley.net or email me at scottsmalley90@gmail.com.");
+        aboutMeTextArea.setEditable(false);
+        aboutMeTextArea.setWrapText(true);
+        aboutMeTextArea.setPrefWidth(modalScene.getWidth());
+        aboutMeTextArea.setPrefHeight(modalScene.getHeight()*0.85);
+        dialog.getChildren().add(aboutMeTextArea);
+
+        Button closeBtn = new Button("Close");
+        closeBtn.setOnAction(event -> modalStage.close());
+        closeBtn.setPrefHeight(primaryStage.getHeight()*0.05);
+        closeBtn.setPrefWidth(primaryStage.getWidth()*0.5);
+        dialog.getChildren().add(closeBtn);
+        modalPane.setCenter(dialog);
+
+        modalStage.setScene(modalScene);
+        modalStage.setTitle("About Me");
+        modalStage.initOwner(primaryStage);
+        modalStage.initModality(Modality.APPLICATION_MODAL);
+        modalStage.showAndWait();
+    }
+
+    private void buildCSVFile(){
+        FileChooser createFile = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("CSV (*.csv)", "*.csv");
+        createFile.getExtensionFilters().add(extensionFilter);
+        createFile.setTitle("Save CSV File");
+        File savingFile = createFile.showSaveDialog(primaryStage);
+        if (savingFile != null){
+            System.out.println(savingFile.getName());
+            try{
+                FileWriter fileWriter = new FileWriter(savingFile.getAbsolutePath());
+                for (String offspring : buildGeneResults.getOutputs()){
+                    String[] offspringSplit = offspring.split("     ");
+                    fileWriter.append(offspringSplit[0]);
+                    fileWriter.append(",");
+                    fileWriter.append(offspringSplit[1]);
+                }
+
+                fileWriter.flush();
+                fileWriter.close();
+            }
+            catch (ArrayIndexOutOfBoundsException aio){
+                System.out.println("There was a problem with array sizing.");
+            }
+            catch(IOException e){
+                System.out.println("There was a problem generating the file.");
+            }
+        }
+        else{
+            System.out.println("No file name.");
+        }
     }
 }
-
-
-/*
-Building Genes stuff for later:
-
-//        GeneBuilder test1 = new BaseGene("Aa"); //1
-//        test1 = new Gene("Bb", test1); //2
-//        test1 = new Gene("Cc", test1); //3
-//        test1 = new Gene("Dd", test1); //4
-//        test1 = new Gene("Ee", test1); //5
-//        test1 = new Gene("Ff", test1); //6
-//        test1 = new Gene("Gg", test1); //7
-//        test1 = new Gene("Hh", test1); //8
-//        test1 = new Gene("Ii", test1); //9
-//        test1 = new Gene("Jj", test1); //10
-//        OffspringResult gor = new OffspringResult();
-//        long startTime = System.currentTimeMillis();
-//        ArrayList<String> results = gor.buildOffspringResults(test1, test1);
-//        long endTime = System.currentTimeMillis();
-//        OffspringData od = new OffspringData();
-//        TreeMap<String, Double> dataResults = od.buildOffspringResultData(results);
-//        DecimalFormat decimalFormat = new DecimalFormat("#.####%");
-//        System.out.println("Offspring:\tPercent Chance");
-//        for (String s : dataResults.keySet()){
-//            System.out.println(s + "\t" + decimalFormat.format(dataResults.get(s)));
-//        }
-//        System.out.println("Single Threaded Execution Time: " + (endTime - startTime) + " milliseconds or " + ((endTime - startTime)/1000.0) + " seconds.");
-//        System.out.println("Number of total offspring: " + results.size());
-
-//        GenerateOffspringResultMultiThread gormt = new GenerateOffspringResultMultiThread();
-//        long startTime2 = System.currentTimeMillis();
-//        ArrayList<String> results2 = gormt.buildOffspringResults(test1, test1);
-//        long endTime2 = System.currentTimeMillis();
-//        System.out.println("Multi Threaded Execution Time: " + (endTime2 - startTime2) + " milliseconds or " + ((endTime2 - startTime2)/1000.0) + " seconds.");
-//        System.out.println("Number of total offspring: " + results2.size());
- */

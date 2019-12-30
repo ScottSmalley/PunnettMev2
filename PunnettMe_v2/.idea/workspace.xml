@@ -5,12 +5,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilderRecursiveTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilderRecursiveTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilderResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilderResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringDataFormatter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringDataFormatter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GenerateOffspringResultMultiThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenerateOffspringResultMultiThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringBuilderRecursiveTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuilderRecursiveTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OffspringBuilderResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuilderResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringDataTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringDataTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringDataFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringDataFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +41,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../whyudothis.csv" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -83,50 +86,54 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1577566041765">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1577663313508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577566041765" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577663313508" />
     <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1577498364419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="354" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577498364419" />
-    <state width="1877" height="189" key="GridCell.Tab.0.bottom" timestamp="1577576515231">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1577663400014">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577576515231" />
-    <state width="1877" height="189" key="GridCell.Tab.0.center" timestamp="1577576515230">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577663400014" />
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577576515230" />
-    <state width="1877" height="189" key="GridCell.Tab.0.left" timestamp="1577576515230">
+    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577576515230" />
-    <state width="1877" height="189" key="GridCell.Tab.0.right" timestamp="1577576515230">
+    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1577666489017">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577576515230" />
-    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1577217919462">
+    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489017" />
+    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919462" />
-    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1577217919461">
+    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom" timestamp="1577666489019">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
-    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1577217919461">
+    <state width="1877" height="227" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489019" />
+    <state width="1877" height="227" key="GridCell.Tab.1.center" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919461" />
-    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1577217919462">
+    <state width="1877" height="227" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state width="1877" height="227" key="GridCell.Tab.1.left" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577217919462" />
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1577556418846">
+    <state width="1877" height="227" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right" timestamp="1577666489018">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577556418846" />
+    <state width="1877" height="227" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577666489018" />
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1577659133071">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="655" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1577659133071" />
     <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1577560993312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,18 +1,27 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import java.text.DecimalFormat;
 import java.util.TreeMap;
 
 public class BuildGeneResultsGUI {
-    public TextArea buildGeneResults(TreeMap<String, Double> results){
-        TextArea resultsTextArea = new TextArea();
-        resultsTextArea.setEditable(false);
-        resultsTextArea.setWrapText(false);
+    private ObservableList<String> outputs;
+    public BuildGeneResultsGUI(){
+        outputs = FXCollections.observableArrayList();
+    }
+    public ObservableList<String> buildGeneResults(TreeMap<String, Double> results, int totalSize){
         DecimalFormat formatPercent = new DecimalFormat("0.0000%");
-        resultsTextArea.setText("Gene:\t% Chance:");
+//        ObservableList<String> outputs = FXCollections.observableArrayList();
+        outputs.add("Gene:      % Chance:");
         for (String gene : results.keySet()){
-            resultsTextArea.appendText("\n" + gene + "\t" + formatPercent.format(results.get(gene)));
+            outputs.add("\n" + gene + "     " + formatPercent.format(results.get(gene)));
         }
-        resultsTextArea.appendText("\nTotal unique gene combinations:\t" + results.size());
-        return resultsTextArea;
+        outputs.add("\nTotal unique offspring combinations:      " + results.size());
+        outputs.add("\nTotal offspring:      " + totalSize);
+        return outputs;
+    }
+
+    public ObservableList<String> getOutputs(){
+        return outputs;
     }
 }
