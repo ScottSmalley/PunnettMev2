@@ -31,8 +31,8 @@ public class BuildGeneResultsGUI {
         //Tried using \t, which worked great in console--but had mixed results
         //in GUI elements. It would intermittently ignore \t.
         formattedData.add("Gene:      % Chance:");
-        for (String gene : results.keySet()){
-            formattedData.add("\n" + gene + "     " + formatPercent.format(results.get(gene)));
+        for (String geneKey : results.keySet()){
+            formattedData.add("\n" + geneKey + "     " + formatPercent.format(results.get(geneKey)));
         }
         formattedData.add("\nTotal unique offspring combinations:      " + results.size());
         formattedData.add("\nTotal offspring:      " + totalSize);

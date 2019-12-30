@@ -27,7 +27,7 @@ public class OffspringBuilderResult implements OffspringBuilder {
                 String[] parentOneSplit = parentOne.split("");
             for (String parentTwo : parentTwoCombination){
                 String[] parentTwoSplit = parentTwo.split("");
-                offspringResults.add(generateSingleOffspringResult(parentOneSplit, parentTwoSplit));
+                offspringResults.add(buildSingleOffspringResult(parentOneSplit, parentTwoSplit));
             }
         }
         return offspringResults;
@@ -41,7 +41,7 @@ public class OffspringBuilderResult implements OffspringBuilder {
      * @param parentTwo
      * @return String
      */
-    private String generateSingleOffspringResult(String[] parentOne, String[] parentTwo){
+    private String buildSingleOffspringResult(String[] parentOne, String[] parentTwo){
         String offspringResult = "";
         for (int idx = 0; idx < parentOne.length; idx++){
             /*

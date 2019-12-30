@@ -24,8 +24,10 @@ public class OffspringDataFormatter implements OffspringDataBuilder {
     public TreeMap<String, Double> buildOffspringData(ArrayList<String> offspring) {
         totalDataPoints = 0;
         TreeMap<String, Double> dataResults = new TreeMap<>();
+        //Works through the ArrayList, creating k,v pairs in the
+        //TreeMap if one doesn't already exist. If it does exist,
+        //increment the value.
         for (String singleOffspring : offspring){
-            //Increment if it exists, if not, create an entry.
             if (dataResults.containsKey(singleOffspring)){
                 double currData = dataResults.get(singleOffspring);
                 currData += 1.0;
@@ -37,6 +39,8 @@ public class OffspringDataFormatter implements OffspringDataBuilder {
             }
             totalDataPoints++;
         }
+        //Works through the TreeMap, changing each value from
+        //an increment value into a % of the total offspring count.
         for (String geneKey : dataResults.keySet()){
             double totalNumOfThisGeneSequence = dataResults.get(geneKey);
             dataResults.replace(geneKey, (totalNumOfThisGeneSequence / offspring.size()));
