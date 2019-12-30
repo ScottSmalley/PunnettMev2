@@ -109,45 +109,45 @@ public class Main extends Application {
     }
 
     private void generateGeneResults(){
+//GET GENES FROM GUI
+        //Get each TextField from parent one and store it into an ArrayList.
         ArrayList<TextField> geneNameTextFields = buildGeneSelector.getParentOneTextField();
+        //Make our base gene of our gene decorator.
         GeneBuilder parentOneGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
+        //Generate as many Gene objects that compose it's predecessors.
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
             parentOneGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentOneGeneBuilder);
         }
+        //Get each TextField from parent two and store it into an ArrayList.
         geneNameTextFields = buildGeneSelector.getParentTwoTextField();
+        //Make our base gene of our gene decorator.
         GeneBuilder parentTwoGeneBuilder = new BaseGene(geneNameTextFields.get(0).getText());
+        //Generate as many Gene objects that compose it's predecessors.
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
-
+//GENERATE RAW OFFSPRING RESULTS
         OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
         ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-
+//FORMAT THOSE RAW RESULTS INTO USEFUL DATA
         OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
         TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
-
+//GRAPHICALLY FORMAT THE DATA INTO GUI ELEMENTS
         buildGeneResults = new BuildGeneResultsGUI();
         ObservableList<String> results = buildGeneResults.buildGeneResults(formattedResults, offspringDataFormatterGenerator.getTotalDataPoints());
         ListView<String> resultsContent = new ListView<>(results);
-
+//DISPLAY THE DATA
         centerDisplay.setContent(resultsContent);
         resultsContent.setPrefWidth(centerDisplay.getWidth()*CENTERDISPLAYRATIO);
         resultsContent.setPrefHeight(centerDisplay.getHeight()*CENTERDISPLAYRATIO);
 
     }
     private void showAboutMeWindow(){
-        System.out.println("Abt me");
-//        ButtonType closeBtn = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
-//        Dialog<String> dialogBox = new Dialog<>();
-//        dialogBox.getDialogPane().getButtonTypes().add(closeBtn);
         Stage modalStage = new Stage();
-//        modalStage.sizeToScene();
         BorderPane modalPane = new BorderPane();
         Scene modalScene = new Scene(modalPane, primaryStage.getWidth()*0.5, primaryStage.getHeight()*0.5);
-
         VBox dialog = new VBox();
         dialog.setPadding(new Insets(5, 5, 5, 5));
-
         TextArea aboutMeTextArea = new TextArea("Hello, my name is Scott Smalley. My project is to help " +
                 "those interested in seeing the results of a Punnett Square between two reproductive partners. " +
                 "When I took Biology, I really could’ve used a user-friendly, results oriented calculator. Most " +
@@ -188,13 +188,12 @@ public class Main extends Application {
             System.out.println(savingFile.getName());
             try{
                 FileWriter fileWriter = new FileWriter(savingFile.getAbsolutePath());
-                for (String offspring : buildGeneResults.getOutputs()){
+                for (String offspring : buildGeneResults.getFormattedData()){
                     String[] offspringSplit = offspring.split("     ");
                     fileWriter.append(offspringSplit[0]);
                     fileWriter.append(",");
                     fileWriter.append(offspringSplit[1]);
                 }
-
                 fileWriter.flush();
                 fileWriter.close();
             }
