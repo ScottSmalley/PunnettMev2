@@ -10,10 +10,9 @@ Started development with User Stories.
 Designed a UML diagram.
 Created Gene class hierarchy using the Decorator Design Pattern.
 Increased the amount of genes between two partners to 10, up from 5.
+This increased the amount of offspring data points from 1,024 to 1,048,576.
 Created a brand new GUI using JavaFX instead of AWT/Swing.
-Created an Executable jar file*. 
-Used good programming principles such as "programming to an interface, 
-not an implementation" when appropriate.
+Created an Executable jar file.
 
 ***The Executable jar file requires JDK 10.0.2 or higher to function***
 
