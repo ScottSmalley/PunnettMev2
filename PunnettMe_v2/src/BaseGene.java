@@ -20,7 +20,7 @@ public class BaseGene implements GeneBuilder {
      * @return String
      */
     @Override
-    public String buildSingleParentGene() {
+    public String build() {
         return gene;
     }
 
@@ -31,7 +31,7 @@ public class BaseGene implements GeneBuilder {
      * @return String[]
      */
     @Override
-    public ArrayList<String> buildSingleParentGeneCombination(){
+    public ArrayList<String> buildCombination(){
         ArrayList<String> geneCombinations = new ArrayList<>();
         String[] geneSplit = gene.split("");
         try{

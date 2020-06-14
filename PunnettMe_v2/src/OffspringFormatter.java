@@ -6,7 +6,7 @@
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public class OffspringDataFormatter implements OffspringDataBuilder {
+public class OffspringFormatter implements OffspringFormatDataBehavior {
     //Counter for how many total offspring were produced.
     private int totalDataPoints;
 
@@ -21,7 +21,7 @@ public class OffspringDataFormatter implements OffspringDataBuilder {
      * @return TreeMap<String, Double>
      */
     @Override
-    public TreeMap<String, Double> buildOffspringData(ArrayList<String> offspring) {
+    public TreeMap<String, Double> buildData(ArrayList<String> offspring) {
         totalDataPoints = 0;
         TreeMap<String, Double> dataResults = new TreeMap<>();
         //Works through the ArrayList, creating k,v pairs in the

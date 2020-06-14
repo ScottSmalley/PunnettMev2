@@ -9,12 +9,12 @@ public interface GeneBuilder {
      * Generate a String that represents the raw genetic traits.
      * @return String
      */
-    String buildSingleParentGene();
+    String build();
 
     /**
      * Generate the combinations between all the genes to prepare for
      * being used in a Punnett Square.
      * @return ArrayList<String>
      */
-    ArrayList<String> buildSingleParentGeneCombination();
+    ArrayList<String> buildCombination();
 }

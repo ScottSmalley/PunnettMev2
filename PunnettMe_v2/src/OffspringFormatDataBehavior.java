@@ -6,7 +6,7 @@
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-public interface OffspringDataBuilder {
+public interface OffspringFormatDataBehavior {
     /**
      * Take the raw results and find duplicates.
      * Generate a list of unique offspring gene
@@ -16,5 +16,5 @@ public interface OffspringDataBuilder {
      * @param offspring
      * @return TreeMap<String, Double>
      */
-    TreeMap<String, Double> buildOffspringData(ArrayList<String> offspring);
+    TreeMap<String, Double> buildData(ArrayList<String> offspring);
 }

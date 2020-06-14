@@ -9,9 +9,9 @@ import java.text.DecimalFormat;
 import java.util.TreeMap;
 
 public class BuildGeneResultsGUI {
-    private ObservableList<String> formattedData;
+    private ObservableList<String> data;
     public BuildGeneResultsGUI(){
-        formattedData = FXCollections.observableArrayList();
+        data = FXCollections.observableArrayList();
     }
 
     /**
@@ -26,24 +26,24 @@ public class BuildGeneResultsGUI {
      * @param totalSize
      * @return ObservableList<String>
      */
-    public ObservableList<String> buildGeneResults(TreeMap<String, Double> results, int totalSize){
+    public ObservableList<String> buildResults(TreeMap<String, Double> results, int totalSize){
         DecimalFormat formatPercent = new DecimalFormat("0.0000%");
         //Tried using \t, which worked great in console--but had mixed results
         //in GUI elements. It would intermittently ignore \t.
-        formattedData.add("Gene:      % Chance:");
+        data.add("Gene:      % Chance:");
         for (String geneKey : results.keySet()){
-            formattedData.add("\n" + geneKey + "     " + formatPercent.format(results.get(geneKey)));
+            data.add("\n" + geneKey + "     " + formatPercent.format(results.get(geneKey)));
         }
-        formattedData.add("\nTotal unique offspring combinations:      " + results.size());
-        formattedData.add("\nTotal offspring:      " + totalSize);
-        return formattedData;
+        data.add("\nTotal unique offspring combinations:      " + results.size());
+        data.add("\nTotal offspring:      " + totalSize);
+        return data;
     }
 
     /**
      * Returns the GUI-formatted data.
      * @return ObservableList<String>
      */
-    public ObservableList<String> getFormattedData(){
-        return formattedData;
+    public ObservableList<String> getData(){
+        return data;
     }
 }

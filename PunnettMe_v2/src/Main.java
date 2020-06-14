@@ -165,14 +165,14 @@ public class Main extends Application {
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
 //GENERATE RAW OFFSPRING RESULTS
-        OffspringBuilderResult offspringBuilderResultGenerator = new OffspringBuilderResult();
-        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildOffspringResults(parentOneGeneBuilder, parentTwoGeneBuilder);
+        OffspringBuilder offspringBuilderResultGenerator = new OffspringBuilder();
+        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildResults(parentOneGeneBuilder, parentTwoGeneBuilder);
 //FORMAT THOSE RAW RESULTS INTO USEFUL DATA
-        OffspringDataFormatter offspringDataFormatterGenerator = new OffspringDataFormatter();
-        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildOffspringData(offspringResults);
+        OffspringFormatter offspringDataFormatterGenerator = new OffspringFormatter();
+        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildData(offspringResults);
 //GRAPHICALLY FORMAT THE DATA INTO GUI ELEMENTS
         buildGeneResults = new BuildGeneResultsGUI();
-        ObservableList<String> results = buildGeneResults.buildGeneResults(formattedResults, offspringDataFormatterGenerator.getTotalDataPoints());
+        ObservableList<String> results = buildGeneResults.buildResults(formattedResults, offspringDataFormatterGenerator.getTotalDataPoints());
         ListView<String> resultsContent = new ListView<>(results);
 //DISPLAY THE DATA
         centerDisplay.setContent(resultsContent);
@@ -236,7 +236,7 @@ public class Main extends Application {
             System.out.println(savingFile.getName());
             try{
                 FileWriter fileWriter = new FileWriter(savingFile.getAbsolutePath());
-                for (String offspring : buildGeneResults.getFormattedData()){
+                for (String offspring : buildGeneResults.getData()){
                     String[] offspringSplit = offspring.split("     ");
                     fileWriter.append(offspringSplit[0]);
                     fileWriter.append(",");

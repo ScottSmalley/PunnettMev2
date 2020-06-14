@@ -21,12 +21,12 @@ abstract class GeneWrapper implements GeneBuilder{
      * Generate a String that represents the raw genetic traits.
      * @return String
      */
-    abstract public String buildSingleParentGene();
+    abstract public String build();
 
     /**
      * Generate the combinations between all the genes to prepare for
      * being used in a Punnett Square.
      * @return ArrayList<String>
      */
-    abstract public ArrayList<String> buildSingleParentGeneCombination();
+    abstract public ArrayList<String> buildCombination();
 }

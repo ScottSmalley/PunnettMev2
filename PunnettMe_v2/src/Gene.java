@@ -19,8 +19,8 @@ public class Gene extends GeneWrapper {
      * @return String
      */
     @Override
-    public String buildSingleParentGene() {
-        return internalGene.buildSingleParentGene() + gene;
+    public String build() {
+        return internalGene.build() + gene;
     }
 
     /**
@@ -31,14 +31,14 @@ public class Gene extends GeneWrapper {
      * @return ArrayList<String>
      */
     @Override
-    public ArrayList<String> buildSingleParentGeneCombination() {
+    public ArrayList<String> buildCombination() {
         //Results of adding this Gene to the combinations.
         ArrayList<String> resultingCombination = new ArrayList<>();
         //Split the String that represents the genes, and add each
         //single character to the ArrayList of the internal combinations.
         for (String singleGene : gene.split("")){
             //Add the concatenation of the internal combinations to the current single gene.
-            for (String internalCombo : internalGene.buildSingleParentGeneCombination()){
+            for (String internalCombo : internalGene.buildCombination()){
                 resultingCombination.add(internalCombo + singleGene);
             }
         }
