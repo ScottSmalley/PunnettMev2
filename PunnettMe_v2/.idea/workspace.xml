@@ -2,31 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af9c3862-428e-4a67-8fe0-1eb690428e08" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/OffspringBuildBehavior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Punnett Me v2 UML.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Punnett Me v2 UML.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BaseGene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BaseGene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Gene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Gene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneWrapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/META-INF/PunnettMe_v2.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilderResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringDataBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringDataFormatter.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BaseGene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseGene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BuildGeneResultsGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BuildGeneSelectorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BuildGeneSelectorGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GeneBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GeneWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneWrapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringBuildBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuildBehavior.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OffspringBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringBuilderResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringDataBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringFormatDataBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringDataFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OffspringFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,9 +106,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="124" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1592160864319" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1592160291247">
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1592244729108">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1592160291247" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1592244729108" />
   </component>
 </project>

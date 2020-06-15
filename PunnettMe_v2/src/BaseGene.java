@@ -16,7 +16,7 @@ public class BaseGene implements GeneBuilder {
     }
 
     /**
-     * Being the base gene, it all starts at the base.
+     * Returns the Base Gene String.
      * @return String
      */
     @Override
@@ -25,9 +25,10 @@ public class BaseGene implements GeneBuilder {
     }
 
     /**
-     * Generates the base gene's combinations.
-     * These are simple, just each character in the
-     * gene is a combination at this point.
+     * Builds the base gene's offspring combinations.
+     * Starting point for the gene combinations. These
+     * are simple, just each character in the gene is
+     * a combination at this point.
      * @return String[]
      */
     @Override

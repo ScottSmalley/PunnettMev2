@@ -1,6 +1,7 @@
 /**
- * Formats the offspring data into output that can be
- * put into a GUI element.
+ * Generates a list of genetic combinations and
+ * their percent-chance of appearing in offspring.
+ * Used specifically for the GUI element.
  * @author Scott Smalley
  */
 import javafx.collections.FXCollections;
@@ -15,21 +16,19 @@ public class BuildGeneResultsGUI {
     }
 
     /**
-     * Builds a line by line list of data that can
-     * be used in GUI elements. Each line contains the
-     * genetic String, in addition to the % chance of the
-     * gene appearing. The % chance is formatted to 4 decimal
-     * places. Additionally, at the end it outputs the total
-     * offspring and the amount of unique offspring combinations that
-     * were found.
+     * Builds a list of offspring results that can be
+     * used in GUI elements. Each line contains the
+     * genetic String and the percent-chance of said
+     * gene appearing. The percent-chance is formatted
+     * to 4 decimal places. The last 2 lines are the total
+     * offspring and the number of unique offspring
+     * combinations found.
      * @param results
      * @param totalSize
      * @return ObservableList<String>
      */
     public ObservableList<String> buildResults(TreeMap<String, Double> results, int totalSize){
         DecimalFormat formatPercent = new DecimalFormat("0.0000%");
-        //Tried using \t, which worked great in console--but had mixed results
-        //in GUI elements. It would intermittently ignore \t.
         data.add("Gene:      % Chance:");
         for (String geneKey : results.keySet()){
             data.add("\n" + geneKey + "     " + formatPercent.format(results.get(geneKey)));
@@ -40,7 +39,7 @@ public class BuildGeneResultsGUI {
     }
 
     /**
-     * Returns the GUI-formatted data.
+     * Returns the list of data.
      * @return ObservableList<String>
      */
     public ObservableList<String> getData(){

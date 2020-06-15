@@ -1,7 +1,6 @@
 /**
  * Represents an additional gene from the base gene.
- * This class gets used to wrap other
- * GeneBuilder-inherited genes.
+ * Used as a Wrapper class.
  * @author Scott Smalley
  */
 import java.util.ArrayList;
@@ -12,10 +11,8 @@ public class Gene extends GeneWrapper {
     }
 
     /**
-     * Take the composed GeneBuilder item and
-     * call their buildSingleParentGene().
-     * Concatenate my gene onto the end of their
-     * result.
+     * Builds a String of the genetic traits to
+     * be used later to build offspring combinations.
      * @return String
      */
     @Override
@@ -24,10 +21,10 @@ public class Gene extends GeneWrapper {
     }
 
     /**
-     * Generate combinations with the composed gene
-     * to my gene. For each character in my gene String,
-     * we create a combination for each character in the
-     * composed gene String.
+     * Generate the combinations of traits the
+     * parent could pass on, using the
+     * combinations made from the wrapped gene
+     * and the current gene.
      * @return ArrayList<String>
      */
     @Override

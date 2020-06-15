@@ -15,7 +15,7 @@ public class OffspringFormatter implements OffspringFormatDataBehavior {
      * It checks every row to see if there was a duplicate, if so
      * it will increment a counter. Once completed, it will then
      * work through the TreeMap to replace the counter for each
-     * offspring combination with a % chance of this combination
+     * offspring combination with a percent-chance of this combination
      * appearing during reproduction.
      * @param offspring ArrayList<String>
      * @return TreeMap<String, Double>

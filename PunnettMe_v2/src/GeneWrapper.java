@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 abstract class GeneWrapper implements GeneBuilder{
     protected String gene;
-    //The composed gene that this abstract class would have.
+    //The wrapped gene that this abstract class would have.
     protected GeneBuilder internalGene;
     public GeneWrapper(String gene, GeneBuilder internalGene){
         this.gene = gene;

@@ -49,7 +49,8 @@ public class OffspringBuilder implements OffspringBuildBehavior {
             one is dominant (Uppercase) gene, it should come first.
             for example aA--a from parentOne, A from parentTwo, A should come first.
              */
-            if (parentOne[idx].equals(parentOne[idx].toLowerCase()) && parentTwo[idx].equals(parentTwo[idx].toUpperCase())){
+            if (parentOne[idx].equals(parentOne[idx].toLowerCase())
+                    && parentTwo[idx].equals(parentTwo[idx].toUpperCase())){
                 offspringResult += parentTwo[idx];
                 offspringResult += parentOne[idx];
             }

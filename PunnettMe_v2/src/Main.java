@@ -7,7 +7,6 @@
  * generate a CSV (Comma-Separated Values) file to make
  * data manipulation much easier in a more powerful application.
  * @author Scott Smalley
- * Planned, designed, and created December 2019
  *
  * Contact Info:
  * scottsmalley@gmail.com

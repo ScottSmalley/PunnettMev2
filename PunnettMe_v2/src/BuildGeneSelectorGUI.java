@@ -1,6 +1,6 @@
 /**
- * Generates the GUI elements that are used
- * for selecting genes and their three types.
+ * Generates the GUI elements used to select
+ * the genes to create combinations for.
  * @author Scott Smalley
  */
 import javafx.scene.control.*;
@@ -18,10 +18,8 @@ public class BuildGeneSelectorGUI {
     private ArrayList<TextField> parentTwoTextField;
 
     /**
-     * Builds the GridPane, Labels, RadioButtons,
-     * ToggleGroups, and TextField for parent one
-     * and parent two. The number of these groups
-     * depends on the parameter.
+     * Creates the GUI elements for parent one
+     * and parent two.
      * @param numOfGenes
      * @return GridPane
      */

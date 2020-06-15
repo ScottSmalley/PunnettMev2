@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface OffspringBuildBehavior {
     /**
-     * Take two GeneBuilder parents as params.
+     * Take two GeneBuilder parents as parameters.
      * Work through the combinations of each parent
      * to produce offspring. Return the raw result.
      * @param parentOneGenes GeneBuilder
