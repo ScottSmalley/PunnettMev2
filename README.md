@@ -2,7 +2,8 @@
 PunnettMe v2 replicates the same process as a Punnett Square
 for comparing the genes of two reproducing partners and their offspring. 
 Includes the percent-chance of each offspring combination in the data
-results.
+results. Uses Parallel Processing to compute 10 genetic traits at once.
+Has the option to download the offspring results into a CSV file.
 
 Changes from PunnettMe v1:
 
