@@ -149,35 +149,43 @@ public class Main extends Application {
 //GET GENES FROM GUI
         //Get each TextField from parent one and store it into an ArrayList.
         ArrayList<TextField> geneNameTextFields = buildGeneSelector.getParentOneTextField();
+
         //Make our base gene of our gene decorator.
         GeneBuilder parentOneGeneBuilder = new BaseGene(geneNameTextFields.get(FIRST_ELEMENT_POS).getText());
+
         //Generate as many Gene objects that compose it's predecessors.
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
             parentOneGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentOneGeneBuilder);
         }
+
         //Get each TextField from parent two and store it into an ArrayList.
         geneNameTextFields = buildGeneSelector.getParentTwoTextField();
+
         //Make our base gene of our gene decorator.
         GeneBuilder parentTwoGeneBuilder = new BaseGene(geneNameTextFields.get(FIRST_ELEMENT_POS).getText());
+
         //Generate as many Gene objects that compose it's predecessors.
         for (int idx = 1; idx < geneNameTextFields.size(); idx++){
             parentTwoGeneBuilder = new Gene(geneNameTextFields.get(idx).getText(), parentTwoGeneBuilder);
         }
+
 //GENERATE RAW OFFSPRING RESULTS
-        OffspringBuilder offspringBuilderResultGenerator = new OffspringBuilder();
-        ArrayList<String> offspringResults = offspringBuilderResultGenerator.buildResults(parentOneGeneBuilder, parentTwoGeneBuilder);
-//FORMAT THOSE RAW RESULTS INTO USEFUL DATA
-        OffspringFormatter offspringDataFormatterGenerator = new OffspringFormatter();
-        TreeMap<String, Double> formattedResults = offspringDataFormatterGenerator.buildData(offspringResults);
+        OffspringBuilder offspringBuilder = new OffspringBuilder(parentOneGeneBuilder, parentTwoGeneBuilder);
+        ArrayList<String> offspringResults = offspringBuilder.buildResults();
+
+//FORMAT RAW RESULTS INTO USEFUL DATA
+        OffspringFormatter offspringFormatter = new OffspringFormatter();
+        TreeMap<String, Double> formattedResults = offspringFormatter.buildData(offspringResults);
+
 //GRAPHICALLY FORMAT THE DATA INTO GUI ELEMENTS
         buildGeneResults = new BuildGeneResultsGUI();
-        ObservableList<String> results = buildGeneResults.buildResults(formattedResults, offspringDataFormatterGenerator.getTotalDataPoints());
+        ObservableList<String> results = buildGeneResults.buildResults(formattedResults, offspringFormatter.getTotalDataPoints());
         ListView<String> resultsContent = new ListView<>(results);
+
 //DISPLAY THE DATA
         centerDisplay.setContent(resultsContent);
         resultsContent.setPrefWidth(centerDisplay.getWidth() * CENTER_DISPLAY_RATIO);
         resultsContent.setPrefHeight(centerDisplay.getHeight() * CENTER_DISPLAY_RATIO);
-
     }
 
     /**
