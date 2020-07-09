@@ -13,7 +13,22 @@ abstract class GeneWrapper implements GeneBuilder{
     //The wrapped gene that this abstract class would have.
     protected GeneBuilder internalGene;
     public GeneWrapper(String gene, GeneBuilder internalGene){
-        this.gene = gene;
+        //2 character length is the ONLY valid gene input.
+        if (gene.length() != 2){
+            throw new Error("Gene alleles only contain 2 characters.");
+        }
+        /*
+        Inputs that look like "AA", "Aa", and "aa"
+        are valid, but we need to make sure if we
+        get "aA" that we correct it.
+        */
+        String[] geneSplit = gene.split("");
+        if (geneSplit[0].equals(geneSplit[0].toLowerCase()) && geneSplit[1].equals(geneSplit[1].toUpperCase())){
+            this.gene = geneSplit[1] + geneSplit[0];
+        }
+        else{
+            this.gene = gene;
+        }
         this.internalGene = internalGene;
     }
 

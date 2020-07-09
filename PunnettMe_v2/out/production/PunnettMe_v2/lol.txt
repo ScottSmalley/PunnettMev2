@@ -1,0 +1,18 @@
+AABBCC AaBBCC AABbCC AaBbCC AABBCc AaBBCc AABbCc AaBbCc
+AaBBCC aaBBCC AaBbCC aaBbCC AaBBCc aaBBCc AaBbCc aaBbCc
+AABbCC AaBbCC AAbbCC AabbCC AABbCc AaBbCc AAbbCc AabbCc
+AaBbCC aaBbCC AabbCC aabbCC AaBbCc aaBbCc AabbCc aabbCc
+AABBCc AaBBCc AABbCc AaBbCc AABBcc AaBBcc AABbcc AaBbcc
+AaBBCc aaBBCc AaBbCc aaBbCc AaBBcc aaBBcc AaBbcc aaBbcc
+AABbCc AaBbCc AAbbCc AabbCc AABbcc AaBbcc AAbbcc Aabbcc
+AaBbCc aaBbCc AabbCc aabbCc AaBbcc aaBbcc Aabbcc aabbcc
+
+
+AABBCC	AABbCC	AaBBCc	AaBbCC	AABBCc	AABbCc	AaBBCc	AaBbCc
+AABbCC	AAbbCC	AaBbCc	AabbCC	AABbCc	AAbbCc	AaBbCc	AabbCc
+AaBBCc	AaBbCc	aaBBcc	aaBbCc	AaBBcc	AaBbcc	aaBBcc	aaBbcc
+AaBbCC	AabbCC	aaBbCc	aabbCC	AaBbCc	AabbCc	aaBbCc	aabbCc
+AABBCc	AABbCc	AaBBcc	AaBbcCc	AABBcc	AABbcc	AaBBcc	AaBbcc
+AABbCc	AAbbCc	AaBbcc	AabbCc	AABbcc	AAbbcc	AaBbcc	Aabbcc
+AaBBCc	AaBbCc	aaBBcc	aaBbCc	AaBBcc	AaBbcc	aaBBcc	aaBbcc
+AaBbCc	AabbCc	aaBbcc	aabbCc	AaBbcc	Aabbcc	aaBbcc	aabbcc

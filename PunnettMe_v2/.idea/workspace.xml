@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af9c3862-428e-4a67-8fe0-1eb690428e08" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/lol.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/BaseGeneTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/GeneTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/OffspringBuilderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PunnettMe_v2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PunnettMe_v2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BaseGene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BaseGene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneResultsGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/BuildGeneSelectorGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Gene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Gene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuildBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuildBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneWrapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/GeneWrapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PunnettMe_v2/OffspringBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringBuildBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OffspringBuildBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OffspringBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BaseGene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BaseGene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GeneWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GeneWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -34,7 +35,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1VGF4xc3xgwSZuVdRv2Qqir0J9n" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -42,21 +45,82 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.OffspringBuilderTest.computeTestThreeGeneGreen">
+    <configuration name="All in PunnettMe_v2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PunnettMe_v2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneTest.buildCombinationTestThreeGenesRed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PunnettMe_v2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="GeneTest" />
+      <option name="METHOD_NAME" value="buildCombinationTestThreeGenesRed" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OffspringBuilderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PunnettMe_v2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OffspringBuilderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OffspringBuilderTest.computeTestThreeGeneGreen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PunnettMe_v2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OffspringBuilderTest" />
+      <option name="METHOD_NAME" value="computeTestThreeGeneGreen" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OffspringBuilderTest.computeTestTwoGeneGreen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PunnettMe_v2" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OffspringBuilderTest" />
+      <option name="METHOD_NAME" value="computeTestTwoGeneGreen" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.OffspringBuilderTest.computeTestThreeGeneGreen" />
+        <item itemvalue="JUnit.GeneTest.buildCombinationTestThreeGenesRed" />
+        <item itemvalue="JUnit.OffspringBuilderTest" />
+        <item itemvalue="JUnit.OffspringBuilderTest.computeTestTwoGeneGreen" />
+        <item itemvalue="JUnit.All in PunnettMe_v2" />
       </list>
     </recent_temporary>
   </component>
@@ -86,6 +150,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594246692832">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594246692832" />
     <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1594055557797">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -94,57 +162,92 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="487" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594070983445" />
-    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1594052706508">
+    <state x="740" y="276" key="FileChooserDialogImpl" timestamp="1594237352055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594052706508" />
-    <state width="1877" height="124" key="GridCell.Tab.0.bottom" timestamp="1594077388206">
+    <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594237352055" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1594256375122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="124" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594077388206" />
-    <state width="1877" height="124" key="GridCell.Tab.0.center" timestamp="1594077388206">
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375122" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1594256375121">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="124" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594077388206" />
-    <state width="1877" height="124" key="GridCell.Tab.0.left" timestamp="1594077388206">
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375121" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1594256375121">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="124" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594077388206" />
-    <state width="1877" height="124" key="GridCell.Tab.0.right" timestamp="1594077388206">
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375121" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1594256375121">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="124" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594077388206" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1594068087848">
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375121" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1594256375122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068087848" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1594068087848">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375122" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1594256375122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068087848" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1594068087848">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375122" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1594256375122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068087848" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1594068087848">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375122" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1594256375122">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068087848" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594256375122" />
     <state x="682" y="243" key="RollbackChangesDialog" timestamp="1594068069604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="682" y="243" key="RollbackChangesDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068069604" />
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1594052675203">
+    <state x="440" y="95" key="SettingsEditor" timestamp="1594237416800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594052675203" />
+    <state x="440" y="95" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594237416800" />
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog" timestamp="1594235218598">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="345" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594235218598" />
+    <state x="665" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1594237433239">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="665" y="414" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594237433239" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594253817982">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594253817982" />
+    <state x="731" y="224" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1594245559085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="224" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594245559085" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1594068067772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068067772" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594068064901">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594250763461">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594068064901" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1594250763461" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/tests/GeneTest.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/OffspringBuilder.java</url>
+          <line>43</line>
+          <properties class="OffspringBuilder" method="compute">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
